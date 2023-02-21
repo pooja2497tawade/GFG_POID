@@ -1,0 +1,33 @@
+class Solution {
+    public static int minVal(int a, int b) {
+        // code here
+        int bitA=Integer.bitCount(a);//count bit using fun
+        int bitB=Integer.bitCount(b);
+        
+        int diff=Math.abs(bitA-bitB);
+        
+        if(diff==0)//if bit are equals then a
+        {
+            return a;
+        }
+        else if(bitA>bitB)//if a=1001 and b=1000 so in that case we need unset 1 bit 
+        {
+            while(diff > 0)
+            {
+                a= a&(a-1);//unset the last bit
+                diff--;
+            }
+        }
+        else
+        {
+            while(diff > 0)
+            {
+                a=a|(a+1);
+                diff--;
+            }
+        }
+        return a;
+        
+        
+    }
+}
