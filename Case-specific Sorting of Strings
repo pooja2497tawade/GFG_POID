@@ -1,0 +1,49 @@
+class Solution
+{
+    //Function to perform case-specific sorting of strings.
+    public static String caseSort(String str)
+    {
+        // Your code here
+        char[] ch= str.toCharArray();
+        Arrays.sort(ch);
+        //System.out.println(ch);
+        int upper=-1;
+        int lower=-1;
+        if(ch[0]<97)
+        {
+            upper=0;
+        }
+        for(int i=0;i<ch.length;i++)
+        {
+            char s=ch[i];
+            if(s>=97)
+            {
+                lower=i;
+                break;
+            }
+        }
+        if(upper==-1 || lower==-1)
+        {
+            return new String(ch);
+        }
+        StringBuilder st = new StringBuilder();
+        
+        for(int i=0;i<str.length();i++)
+        {
+            char ch1=str.charAt(i);
+            if(ch1>=97)
+            {
+                st.append(ch[lower]);
+                lower++;
+                
+            }
+            else
+            {
+                st.append(ch[upper]);
+                upper++;
+                
+            }
+        }
+        return  st.toString();
+    }
+}
