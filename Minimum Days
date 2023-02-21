@@ -1,0 +1,37 @@
+class Solution {
+    public static int getMinimumDays(int N, String S, int[] P) {
+        // code here
+        int count=0;
+        char[] ch=S.toCharArray();
+        for(int i=1;i<ch.length;i++)
+        {
+            if(ch[i]==ch[i-1])
+            {
+                count++;
+            }
+        }
+        if(count==0)
+        {
+            return 0;
+        }
+        for(int j=0;j<ch.length;j++)
+        {
+            int index=P[j];
+            if(index!=0 && ch[index]==ch[index-1])
+            {
+                count--;
+            }
+            if(index!=ch.length-1 && ch[index]==ch[index+1])
+            {
+                count--;
+            }
+            if(count==0)
+            {
+                return j+1;
+            }
+            ch[index]='?';
+        }
+        return -1;
+    }
+}
+        
