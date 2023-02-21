@@ -1,0 +1,24 @@
+class Solution{
+	int minCost(int [][] colors, int N){
+        //Write your code here
+        int[][] dp = new int[colors.length][colors[0].length];
+        
+        //add first element
+        int x=colors[0][0];
+        int y=colors[0][1];
+        int z=colors[0][2];
+        
+        for(int i=1;i<N;i++)
+        {
+            
+            int p=x,q=y,r=z;
+
+            x=colors[i][0]+Math.min(r,q);
+
+            y=colors[i][1]+Math.min(p,r);
+
+            z=colors[i][2]+Math.min(p,q);
+        }
+        return Math.min(x,Math.min(y,z));
+    }
+}
