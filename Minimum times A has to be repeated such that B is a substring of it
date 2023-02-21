@@ -1,0 +1,25 @@
+class Solution {
+    static int minRepeats(String A, String B) {
+        // code here
+        String s=A;
+        int moves=1;
+        while(A.length()<B.length())
+        {
+            A+=s;
+            moves++;
+            
+        }
+        if(A.contains(B)==true)
+        {
+            return moves;
+        }
+        A+=s;
+        moves++;
+        if(A.contains(B)==true)
+        {
+            return moves;
+        }
+        return -1;
+        
+    }
+};
