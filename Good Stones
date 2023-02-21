@@ -1,0 +1,43 @@
+class Solution {
+     //Memoization
+    static int[] dp;
+    static int solve(int i, int[] arr, boolean[] visited)
+    {
+        if(i<0 || i>= arr.length) return 1; // good stone
+        if(visited[i]) return dp[i]=2;       // bad stone
+        
+        if(dp[i]!=-1) return dp[i];
+        
+        visited[i] = true;
+        
+        int next = i + arr[i];
+        
+        int returnValue = solve(next, arr, visited);
+        
+        visited[i] = false;
+        
+            return returnValue;
+    }
+    
+    public static int goodStones(int n, int[] arr) {
+        // code here
+        
+        boolean[] visited = new boolean[n];
+        dp = new int[n];
+        int ans = 0;
+        
+        Arrays.fill(dp, -1);
+        
+        for(int i=0;i<n;i++)
+        {
+            if(visited[i] == false)
+            {
+                int val = solve(i,arr,visited);
+                if(val == 1) ans++;
+            }
+        }
+        
+        return ans;
+    }
+}
+        
