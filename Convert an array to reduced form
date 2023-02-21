@@ -1,0 +1,16 @@
+class Solution {
+    void convert(int[] arr, int n) {
+        //Code here
+        
+        TreeMap<Integer, Integer> tm = new TreeMap<>();
+        for(int i=0; i<n; i++)
+            tm.put(arr[i], i);
+        
+        int i=0;
+        for(int k: tm.keySet()){
+            arr[tm.get(k)]=i;
+            i++;
+        }
+        
+    }
+}
