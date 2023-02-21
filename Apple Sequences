@@ -1,0 +1,55 @@
+class Solution{
+    public static int appleSequence(int n, int m, String arr){
+        //code here
+        
+         //code here
+
+        int start=0;
+
+        int end=0;
+
+        int ans=0;
+
+        
+
+        char[] arr1= arr.toCharArray();
+
+        
+
+        while(end!=n){
+
+            if(m>0){
+
+                if(arr1[end]=='O'){
+
+                    m--;
+
+                }
+
+            }else{
+
+                if(arr1[end]=='O'){
+
+                    while(arr1[start]!='O'){
+
+                        start++;
+
+                    }
+
+                    start++;
+
+                }
+
+            }
+
+            ans=Math.max(ans,end-start+1);
+
+            end++;
+
+        }
+
+        return ans;
+        
+        
+    }
+}
