@@ -1,0 +1,16 @@
+class Solution {
+    static long solve(int N, int K, ArrayList<Long> GeekNum) {
+        //code here
+        
+        long sum = 0;
+        for(int i = 0; i < K ; i++)
+            sum += GeekNum.get(i);//cal sum o to k add into the list
+        GeekNum.add(sum);
+        int l = 0;//set l and r
+        int r = K;
+        while(r < N) {
+            GeekNum.add(2*GeekNum.get(r++) - GeekNum.get(l++));
+        }
+        return GeekNum.get(N-1);
+    }
+}
