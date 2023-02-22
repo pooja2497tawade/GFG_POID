@@ -1,0 +1,60 @@
+/*
+class Node{
+    int data;
+    Node left;
+    Node right;
+    Node nextRight;
+    Node(int data){
+        this.data = data;
+        left=null;
+        right=null;
+        nextRight = null;
+    }
+} */
+class Solution {
+    public void connect(Node root) {
+        // code here
+           Queue<Node> queue = new LinkedList<>();
+
+        if(root == null) return ;
+
+        queue.add(root);
+
+        while(!queue.isEmpty()){
+
+            ArrayList<Node> list = new ArrayList<>();
+
+            int size = queue.size();
+
+            while(size>0){
+
+                Node node = queue.remove();
+
+                list.add(node);
+
+                if(node.left != null) queue.add(node.left);
+
+                if(node.right != null) queue.add(node.right);
+
+                size--;
+
+            }
+
+            Node temp = null;
+
+            for(Node node : list)
+            {
+
+                if(temp == null) temp = node;
+
+                else{
+
+                    temp.nextRight = node;
+
+                    temp = node;
+                }
+            }
+        }
+        
+    }
+}
