@@ -1,0 +1,15 @@
+class Solution {
+    public long[] optimalArray(int n,int a[])
+    {
+        long[] res=new long[n];
+        int idx=1;
+        
+        res[0]=0;
+        for(int i=1; i<n; i++){
+            res[idx++]=res[i-1] + (a[i]-a[i/2]);
+        }
+        
+        return res;
+    }
+}
+        
