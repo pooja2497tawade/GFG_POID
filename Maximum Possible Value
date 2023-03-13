@@ -1,0 +1,31 @@
+//User function Template for Java
+class Solution 
+{ 
+    long maxPossibleValue(int N, int A[] ,int B[]) { 
+        // code here
+        long ans=0;
+        int totalSticks=0;
+        int min=Integer.MAX_VALUE;
+        
+        for(int i=0;i<N;i++)
+        {
+            int len=A[i];
+            int units=B[i];
+            if(units%2!=0)
+            {
+                units--;
+            }
+            if(units>=2)
+            {
+                min=Math.min(min,len);
+            }
+            ans+=(len*units);
+            totalSticks+=units;
+        }
+        if(totalSticks%4!=0)
+        {
+            ans=ans-(2*min);
+        }
+        return ans;
+    }
+} 
