@@ -1,0 +1,25 @@
+//User function Template for Java
+
+class Solution{
+    int maxCoins(int N, ArrayList<Integer> arr) {
+		//Write your code here
+		return f(arr,0,N-1,new Integer[N][N]);//array,start,end,new list
+	}
+	
+	public static int f(ArrayList<Integer> arr,int start,int end,Integer[][] dp) {
+	    if(start>end) return 0;//start>end return 0;
+	    
+	    if(dp[start][end]!=null) return dp[start][end];
+	    
+	    int ans=0;
+	    for(int i=start;i<=end;i++) {
+	        int val=arr.get(i);//get the 1 element
+	        if(start-1>=0) val*=arr.get(start-1);//get prev nighbour of paticular element and mul with current val
+	        if(end+1<arr.size()) val*=arr.get(end+1);//get next nighbour of paticular element and mul with current val
+	        val += (f(arr,start,i-1,dp) + f(arr,i+1,end,dp));
+	        
+	        ans = Math.max(ans,val);
+	    }
+	    return dp[start][end]=ans;
+	}
+}
