@@ -1,0 +1,23 @@
+class Solution {
+    public int maxIntersections(int[][] lines, int N) {
+        // Code here
+            Map<Integer, Integer> endpoints = new TreeMap<>();
+            for (int[] line : lines)
+            {
+                // If the start point of the line segment is already in the TreeMap,
+                 // increment its value by 1. Otherwise, add it to the TreeMap with a
+                endpoints.put(line[0], endpoints.getOrDefault(line[0], 0) + 1);
+                // If the end point of the line segment is already in the TreeMap,
+                 // decrement its value by 1. Otherwise, add it to the TreeMap with a 
+                endpoints.put(line[1] + 1, endpoints.getOrDefault(line[1] + 1, 0) - 1);
+            }
+            int intersections = 0;//these for cal max number intersecions point when we draw vertical line
+            
+            int activeLines = 0;
+            for (int count : endpoints.values()) {
+                   activeLines += count;
+                     intersections = Math.max(intersections, activeLines);
+            }
+            return intersections;
+    }
+}
