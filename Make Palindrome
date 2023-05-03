@@ -1,0 +1,23 @@
+class Solution {
+    public static boolean makePalindrome(int n, String[] arr) {
+        // code here
+        
+        HashMap<String,Integer> hm = new HashMap<String,Integer>();
+        
+        for(String s:arr)
+        {
+            hm.put(s,hm.getOrDefault(s,0)+1);
+            
+            hm.put(new StringBuilder(s).reverse().toString(),
+            hm.getOrDefault(new StringBuilder(s).reverse().toString(),0)+1);
+        }
+        for(int p:hm.values())
+        {
+            if(p%2!=0)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+}
