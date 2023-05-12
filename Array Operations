@@ -1,0 +1,16 @@
+
+class Solution {
+    public static int arrayOperations(int n, int[] arr) {
+        // code here
+        int cnt=0;
+        for(int i=0;i<n;)
+        {
+            while(i<n && arr[i]==0)i++;
+            if(i>=n) break;
+            cnt++;
+            while(i<n && arr[i]!=0) i++;
+        }
+        return cnt;
+    }
+}
+        
